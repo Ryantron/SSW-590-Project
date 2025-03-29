@@ -1,4 +1,5 @@
 # Backend
+API Server for handling blogs
 
 
 ## Project Structure

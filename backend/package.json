@@ -9,7 +9,8 @@
     "format:write": "prettier . --write",
     "format:check": "prettier . --check",
     "lint:check": "eslint",
-    "prepare": "husky"
+    "prepare": "cd .. && husky ./backend/.husky",
+    "prepare:wins": "cd .. & husky .\\backend\\.husky"
   },
   "keywords": [],
   "author": "",
