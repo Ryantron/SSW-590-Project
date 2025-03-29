@@ -17,7 +17,7 @@ export const errIfTrue =
         `
           ${errMsg}
           ${msgDataArr.map((d) => `  ${d}\n`)}
-        `
+        `,
       );
     } else return true;
   };
@@ -54,8 +54,8 @@ export function validate(schema, unk, errStatus = 400) {
           errors: structuredErrors,
         },
         null,
-        2
-      )
+        2,
+      ),
     );
   }
   return inputData;

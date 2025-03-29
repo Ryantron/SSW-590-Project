@@ -1,5 +1,5 @@
 import express from 'express';
-import { handleRouteError, validate } from '@/shared/utils/Error';
+import { handleRouteError } from '@/shared/utils/Error';
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ router.route('/blog').post(async (req, res) => {
       res.status(400).send('User not logged in');
       return;
     }
-    const userId = req.session.userId;
+    // const userId = req.session.userId;
 
     res.json({ message: 'Not implemented yet.' });
   } catch (error) {

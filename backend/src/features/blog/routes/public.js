@@ -1,5 +1,5 @@
 import express from 'express';
-import { handleRouteError, validate } from '@/shared/utils/Error';
+import { handleRouteError } from '@/shared/utils/Error';
 
 const router = express.Router();
 

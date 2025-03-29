@@ -1,6 +1,7 @@
 import express from 'express';
 import { handleRouteError, validate } from '@/shared/utils/Error';
 import { authSchema } from '../validations/auth';
+import { login } from '../data/authentication';
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.route('/login').post(async (req, res) => {
     const loginCredentials = validate(authSchema, req.body);
     const userId = await login(
       loginCredentials.username,
-      loginCredentials.password
+      loginCredentials.password,
     );
     if (userId) {
       req.session.userId = userId;

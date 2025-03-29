@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: frontendConfig.url,
     credentials: true,
-  })
+  }),
 );
 
 /**
@@ -25,7 +25,7 @@ app.use(
   session({
     ...sessionConfig,
     store: MongoStore.create(sessionConfig.store),
-  })
+  }),
 );
 
 // Middleware to log the requester's URL

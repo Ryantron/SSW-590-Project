@@ -19,7 +19,7 @@ if (
   !process.env.SESSION_MONGO_CRYPTO_SECRET
 ) {
   throw new Error(
-    'SESSION_MONGO_URL, SESSION_MONGO_TTL, and SESSION_MONGO_CRYPTO_SECRET must be set in .env file'
+    'SESSION_MONGO_URL, SESSION_MONGO_TTL, and SESSION_MONGO_CRYPTO_SECRET must be set in .env file',
   );
 }
 

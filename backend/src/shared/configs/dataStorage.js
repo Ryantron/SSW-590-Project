@@ -1,11 +1,11 @@
-import { Db, MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 let _connection = undefined;
 let _db = undefined;
 
 if (!process.env.DATA_STORAGE_MONGO_URL || !process.env.DATA_STORAGE_MONGO_DB) {
   throw new Error(
-    'DATA_STORAGE_MONGO_URL and DATA_STORAGE_MONGO_DB must be set in .env file'
+    'DATA_STORAGE_MONGO_URL and DATA_STORAGE_MONGO_DB must be set in .env file',
   );
 }
 

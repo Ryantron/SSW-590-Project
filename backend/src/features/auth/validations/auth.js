@@ -13,7 +13,7 @@ export const authSchema = z
     const containsUppercase = (ch) => /[A-Z]/.test(ch);
     const containsLowercase = (ch) => /[a-z]/.test(ch);
     const containsSpecialChar = (ch) =>
-      /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/.test(ch);
+      /[`!@#$%^&*()_\-+=[\]{};':"\\|,.<>/?~ ]/.test(ch);
     let countOfUpperCase = 0,
       countOfLowerCase = 0,
       countOfNumbers = 0,
