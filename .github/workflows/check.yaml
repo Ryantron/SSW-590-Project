@@ -1,15 +1,28 @@
-name: Lint Staged
+name: Checking
 
 on:
-  push:
-    branches: ['**']
   pull_request:
     branches: ['**']
 
 jobs:
   check-backend:
-    name: Run lint-staged and other scripts
+    name: Run scripts
     runs-on: ubuntu-latest
+    environment: checking-code
+    env:
+      SERVER_URL: ${{ vars.SERVER_URL }}
+      SERVER_PORT: ${{ vars.SERVER_PORT }}
+      FRONTEND_URL: ${{ vars.FRONTEND_URL }}
+      SESSION_MONGO_USERNAME: ${{ vars.SESSION_MONGO_USERNAME }}
+      SESSION_MONGO_PASSWORD: ${{ vars.SESSION_MONGO_PASSWORD }}
+      SESSION_MONGO_URL: ${{ vars.SESSION_MONGO_URL }}
+      SESSION_MONGO_TTL: ${{ vars.SESSION_MONGO_TTL }}
+      SESSION_MONGO_CRYPTO_SECRET: ${{ secrets.SESSION_MONGO_CRYPTO_SECRET }}
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      DATA_STORAGE_MONGO_URL: ${{ secrets.DATA_STORAGE_MONGO_URL }}
+      DATA_STORAGE_MONGO_DB: ${{ vars.DATA_STORAGE_MONGO_DB }}
+      ADMIN_USERNAME: ${{ vars.ADMIN_USERNAME }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
     steps:
       - name: Checkout code
@@ -28,8 +41,28 @@ jobs:
         run: npm ci
         working-directory: ./backend
 
-      - name: Run lint-staged for backend
-        run: npm run lint-staged
+      - name: Run formatter for backend
+        run: npm run format:check
+        working-directory: ./backend
+
+      - name: Run linter for backend
+        run: npm run lint:check
+        working-directory: ./backend
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.12.0
+        with:
+          mongodb-version: '8.0'
+          mongodb-username: ${{ vars.SESSION_MONGO_USERNAME }}
+          mongodb-password: ${{ vars.SESSION_MONGO_PASSWORD }}
+          mongodb-db: ${{ vars.DATA_STORAGE_MONGO_DB }}
+
+      - name: Run unit test for backend
+        run: npm run test:unit
+        working-directory: ./backend
+
+      - name: Run integration test for backend
+        run: npm run test:int
         working-directory: ./backend
 
       - name: Run build
