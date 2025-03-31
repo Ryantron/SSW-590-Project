@@ -1,6 +1,15 @@
 # Backend
 API Server for handling blogs
 
+To run dev:
+- Get inside: `cd backend`
+- `npm ci`
+- Copy `.env.example` and rename it to `.env`
+- Run mongodb either natively or through docker (using the `docker-compose.yml` file in `backend/`)
+  - For ease of testing, set username to `admin` and password to `password`. 
+    - If you want to use a different username and password, make sure you change the values in `.env` accordingly.
+- `npm run dev`
+
 
 ## Project Structure
 - `src/`
