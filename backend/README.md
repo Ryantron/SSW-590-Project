@@ -8,6 +8,7 @@ API Server for handling blogs
      -  `index.js` - entry file
      -  `app.js` - expose ExpressJS app here
      -  `routing.js` - may be needed if there is too many middleware and routing code to be left in `app.js`
+  -  `helpers/` - code that is executed before tests
   -  `features/` - main part of the app
      -  `(featureA)/` - a specific feature, e.g. authorization
         -  `configs/` - featureA-specific configuration
@@ -32,5 +33,7 @@ API Server for handling blogs
 
 ### Additional Rules
 - `app/` can access `features/` and `shared/`.
+- `helpers` can access `app/`, `features/`, and `shared/`
 - `features/` can only access `shared/`.
 - `shared/` can not access any other directories/folders.
+- `int.test` files can access `app.js`

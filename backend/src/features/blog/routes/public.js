@@ -3,7 +3,7 @@ import { handleRouteError } from '@/shared/utils/Error';
 
 const router = express.Router();
 
-router.route('/blog').get(async (req, res) => {
+router.route('/').get(async (req, res) => {
   try {
     res.json({ message: 'Not implemented yet.' });
   } catch (error) {
@@ -12,7 +12,7 @@ router.route('/blog').get(async (req, res) => {
   return;
 });
 
-router.route('/blog/:id').get(async (req, res) => {
+router.route('/:id').get(async (req, res) => {
   try {
     res.json({ message: 'Not implemented yet.' });
   } catch (error) {

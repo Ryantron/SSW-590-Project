@@ -5,7 +5,7 @@ let _db = undefined;
 
 if (!process.env.DATA_STORAGE_MONGO_URL || !process.env.DATA_STORAGE_MONGO_DB) {
   throw new Error(
-    'DATA_STORAGE_MONGO_URL and DATA_STORAGE_MONGO_DB must be set in .env file',
+    'DATA_STORAGE_MONGO_URL and DATA_STORAGE_MONGO_DB must be set in environment.',
   );
 }
 
@@ -51,7 +51,5 @@ const dropCollectionFn = async (collection) => {
   await db.dropCollection(collection);
 };
 
-export const users = getCollectionFn('users');
 export const blogs = getCollectionFn('blogs');
-export const dropUsers = () => dropCollectionFn('users');
 export const dropBlogs = () => dropCollectionFn('blogs');

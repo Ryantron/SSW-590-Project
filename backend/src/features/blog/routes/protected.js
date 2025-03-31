@@ -3,7 +3,7 @@ import { handleRouteError } from '@/shared/utils/Error';
 
 const router = express.Router();
 
-router.route('/blog').post(async (req, res) => {
+router.route('/').post(async (req, res) => {
   try {
     if (req.session.userId === undefined) {
       res.status(400).send('User not logged in');
