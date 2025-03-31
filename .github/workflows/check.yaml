@@ -7,8 +7,8 @@ on:
     branches: ['**']
 
 jobs:
-  check-code-backend:
-    name: Run lint-staged for backend
+  check-backend:
+    name: Run lint-staged and other scripts
     runs-on: ubuntu-latest
 
     steps:
@@ -30,4 +30,8 @@ jobs:
 
       - name: Run lint-staged for backend
         run: npm run lint-staged
+        working-directory: ./backend
+
+      - name: Run build
+        run: npm run build
         working-directory: ./backend
