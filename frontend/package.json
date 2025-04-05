@@ -11,7 +11,7 @@
     "format:write": "prettier . --write",
     "format:check": "prettier . --check",
     "lint:check": "eslint",
-    "prepare": "cd .. && husky ./frontend/.husky",
+    "prepare": "cd .. && husky ./.husky",
     "lint-staged": "lint-staged",
     "test:unit": "jest unit --detectOpenHandles",
     "test:int": "jest int --detectOpenHandles"
