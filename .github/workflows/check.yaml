@@ -107,6 +107,6 @@ jobs:
         run: npm run test:int
         working-directory: ./frontend
 
-      - name: Run start:dev
-        run: npm run start:dev
+      - name: Run build
+        run: npm run build
         working-directory: ./frontend
