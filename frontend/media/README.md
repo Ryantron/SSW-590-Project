@@ -1,0 +1,1 @@
+All assets that are not imported/used in `src/` directory should be left inside this `media/` directory.

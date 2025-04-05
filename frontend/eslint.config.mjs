@@ -21,11 +21,19 @@ const eslintConfigJest = {
 };
 
 export default defineConfig([
-  { ignores: ['dist/*', 'node_modules/*', 'media/*'] },
+  {
+    ignores: [
+      'dist/*',
+      'public/*',
+      'node_modules/*',
+      'media/*',
+      'webpack.config.js',
+    ],
+  },
   { files: ['**/*.{js,mjs,cjs}'] },
   {
     files: ['**/*.{js,mjs,cjs}'],
-    languageOptions: { globals: globals.node },
+    languageOptions: { globals: globals.browser },
   },
   {
     files: ['**/*.{js,mjs,cjs}'],
@@ -35,5 +43,3 @@ export default defineConfig([
   eslintConfigPrettier,
   eslintConfigJest,
 ]);
-
-// * copied from backend, not modified
