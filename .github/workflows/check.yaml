@@ -27,8 +27,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0C
 
       - name: Setup Node.js for backend
         uses: actions/setup-node@v4
@@ -77,8 +75,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0C
 
       - name: Setup Node.js for frontend
         uses: actions/setup-node@v4
