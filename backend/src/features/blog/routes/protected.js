@@ -1,17 +1,21 @@
 import express from 'express';
-import { handleRouteError } from '@/shared/utils/Error';
+import { handleRouteError, validate } from '@/shared/utils/Error';
+import { addBlogSchema } from '../validation/blog';
+import { addBlog } from '../data/blog';
 
 const router = express.Router();
 
 router.route('/').post(async (req, res) => {
   try {
     if (req.session.userId === undefined) {
-      res.status(400).send('User not logged in');
+      res.status(401).send('User not logged in');
       return;
     }
-    // const userId = req.session.userId;
+    const blog = validate(addBlogSchema, req.body);
 
-    res.json({ message: 'Not implemented yet.' });
+    const result = await addBlog(blog);
+
+    res.json({ blog: result });
   } catch (error) {
     handleRouteError(error, res);
   }
