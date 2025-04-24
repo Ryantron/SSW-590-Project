@@ -7,10 +7,6 @@ const router = express.Router();
 
 router.route('/').post(async (req, res) => {
   try {
-    if (req.session.userId === undefined) {
-      res.status(401).send('User not logged in');
-      return;
-    }
     const blog = validate(addBlogSchema, req.body);
 
     const result = await addBlog(blog);
