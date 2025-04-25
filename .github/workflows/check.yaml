@@ -7,7 +7,10 @@ on:
 jobs:
   check-backend:
     name: Run backend scripts
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     environment: checking-code
     env:
       SERVER_URL: ${{ vars.SERVER_URL }}
@@ -69,7 +72,10 @@ jobs:
 
   check-frontend:
     name: Run frontend scripts
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     environment: checking-frontend-code
 
     steps:
