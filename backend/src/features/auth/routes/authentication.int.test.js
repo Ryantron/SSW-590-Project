@@ -1,11 +1,10 @@
 import session from 'supertest-session';
 
-import path from 'path';
-
 import { adminConfig } from '@/shared/configs/settings.js';
 
 import { app, mongoStore } from '@/app/app';
 import { routes } from '@/shared/configs/routes';
+import { joinPath } from '@/shared/utils/helpers';
 
 describe('Authentication', () => {
   let testSession = null;
@@ -16,7 +15,7 @@ describe('Authentication', () => {
   describe('POST login', () => {
     test('should return with session token.', async () => {
       const result = await testSession
-        .post(path.join(routes.auth, '/login'))
+        .post(joinPath(routes.auth, '/login'))
         .send({
           username: adminConfig.username,
           password: adminConfig.password,

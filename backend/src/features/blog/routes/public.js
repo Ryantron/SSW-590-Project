@@ -1,11 +1,13 @@
 import express from 'express';
-import { handleRouteError } from '@/shared/utils/Error';
+import { handleRouteError, validate } from '@/shared/utils/Error';
+import { getAllBlogs, getBlog } from '../data/blog';
+import { stringObjectIdSchema } from '@/shared/validations/mongo';
 
 const router = express.Router();
 
 router.route('/').get(async (req, res) => {
   try {
-    res.json({ message: 'Not implemented yet.' });
+    res.json({ blogs: await getAllBlogs() });
   } catch (error) {
     handleRouteError(error, res);
   }
@@ -14,7 +16,8 @@ router.route('/').get(async (req, res) => {
 
 router.route('/:id').get(async (req, res) => {
   try {
-    res.json({ message: 'Not implemented yet.' });
+    const id = validate(stringObjectIdSchema, req.params.id, 401);
+    res.json({ blog: await getBlog(id) });
   } catch (error) {
     handleRouteError(error, res);
   }
