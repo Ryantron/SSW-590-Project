@@ -1,10 +1,9 @@
 import session from 'supertest-session';
 
-import path from 'path';
-
 import { app, mongoStore } from '@/app/app';
 import { routes } from '@/shared/configs/routes';
 import { closeConnection, dropBlogs } from '@/shared/configs/dataStorage';
+import { joinPath } from '@/shared/utils/helpers';
 // import { adminConfig } from '@/shared/configs/settings';
 
 const data = {
@@ -20,7 +19,7 @@ describe('Public Blog', () => {
     testSession = session(app);
 
     // await testSession
-    //   .post(path.join(routes.auth, 'login'))
+    //   .post(joinPath(routes.auth, 'login'))
     //   .send({
     //     username: adminConfig.username,
     //     password: adminConfig.password,
@@ -37,7 +36,7 @@ describe('Public Blog', () => {
     // test('should return a new blog.', async () => {
     //   console.log('Cookies: ', testSession.cookies);
     //   const response = await testSession
-    //     .post(path.join(routes.blog, '/protected'))
+    //     .post(joinPath(routes.blog, '/protected'))
     //     .send(data);
     //   console.log(JSON.parse(response.text));
     //   const [result] = [JSON.parse(response.text).blog].map((blog) => ({
@@ -49,7 +48,7 @@ describe('Public Blog', () => {
 
     test('should error since user is not logged in', async () => {
       const response = await testSession
-        .post(path.join(routes.blog, '/protected'))
+        .post(joinPath(routes.blog, '/protected'))
         .send(data);
       expect(response.text).toEqual('User not logged in');
       expect(response.status).toEqual(401);

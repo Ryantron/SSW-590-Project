@@ -3,13 +3,12 @@ import session from 'express-session';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
 
-import path from 'path';
-
 import useAuthRoutes from '../features/auth/routes';
 import useBlogRoutes from '../features/blog/routes';
 import { protectRoute } from '../features/auth/middlewares';
 import { frontendConfig, sessionConfig } from '../shared/configs/settings';
 import { routes } from '@/shared/configs/routes';
+import { joinPath } from '@/shared/utils/helpers';
 
 export const app = express();
 
@@ -40,7 +39,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(path.join(routes.blog, '/protected'), protectRoute());
+app.use(joinPath(routes.blog, '/protected'), protectRoute());
 
 /**
  * Routes

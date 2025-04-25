@@ -1,11 +1,10 @@
 import session from 'supertest-session';
 
-import path from 'path';
-
 import { app, mongoStore } from '@/app/app';
 import { routes } from '@/shared/configs/routes';
 import { addBlog } from '../data/blog';
 import { closeConnection, dropBlogs } from '@/shared/configs/dataStorage';
+import { joinPath } from '@/shared/utils/helpers';
 
 const data = {
   title: 'Tariff increased to 200% against EU.',
@@ -28,7 +27,7 @@ describe('Public Blog', () => {
 
   describe('GET blogs', () => {
     test('should return an array with one blog.', async () => {
-      const response = await testSession.get(path.join(routes.blog, '/'));
+      const response = await testSession.get(joinPath(routes.blog, '/'));
       const result = JSON.parse(response.text).blogs.map((blog) => ({
         title: blog.title,
         content: blog.content,
@@ -41,7 +40,7 @@ describe('Public Blog', () => {
   describe('GET one blog', () => {
     test('should return an array with one blog.', async () => {
       const response = await testSession.get(
-        path.join(routes.blog, `/${blog._id}`),
+        joinPath(routes.blog, `/${blog._id}`),
       );
       const [result] = [JSON.parse(response.text).blog].map((blog) => ({
         title: blog.title,

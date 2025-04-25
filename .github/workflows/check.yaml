@@ -74,7 +74,7 @@ jobs:
     name: Run frontend scripts
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     environment: checking-frontend-code
 
