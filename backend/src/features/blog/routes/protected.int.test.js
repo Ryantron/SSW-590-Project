@@ -51,6 +51,7 @@ describe('Public Blog', () => {
       const response = await testSession
         .post(path.join(routes.blog, '/protected'))
         .send(data);
+      expect(response.text).toEqual('User not logged in');
       expect(response.status).toEqual(401);
     });
   });
