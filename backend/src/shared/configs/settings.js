@@ -49,7 +49,7 @@ export const sessionConfig = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * process.env.SESSION_MONGO_CRYPTO_SECRET,
+    maxAge: 1000 * process.env.SESSION_MONGO_TTL,
     secure: mode === 'development' ? false : true,
     sameSite: true,
   },
