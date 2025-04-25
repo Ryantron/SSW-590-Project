@@ -1,4 +1,6 @@
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
+dotenv.config();
 
 let _connection = undefined;
 let _db = undefined;
@@ -13,18 +15,25 @@ if (!process.env.DATA_STORAGE_MONGO_URL || !process.env.DATA_STORAGE_MONGO_DB) {
  *
  * @returns {Promise<Db>}
  */
-export const dbConnection = async () => {
+export const dbConnection = async (
+  url = process.env.DATA_STORAGE_MONGO_URL,
+  db = process.env.DATA_STORAGE_MONGO_DB,
+  connectOptions = {},
+) => {
   if (!_connection) {
-    _connection = await MongoClient.connect(process.env.DATA_STORAGE_MONGO_URL);
-    _db = _connection.db(process.env.DATA_STORAGE_MONGO_DB);
+    _connection = await MongoClient.connect(url, connectOptions);
+    _db = _connection.db(db);
   }
 
   return _db;
 };
 
 export const closeConnection = async () => {
-  if (_connection) await _connection.close();
-  else throw new Error('Mongo Connection not found');
+  if (_connection) {
+    await _connection.close();
+    _connection = undefined;
+    _db = undefined;
+  } else throw new Error('Mongo Connection not found');
 };
 
 const getCollectionFn = (collection) => {
