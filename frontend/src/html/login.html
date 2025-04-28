@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="./index.html"
+          ><img src="../logo.png" alt="Home" class="logo"
+        /></a>
+      </h1>
+      <nav>
+        <a href="./about.html">About</a>
+        <a href="./login.html">Login</a>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <form action="/login" method="POST">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <button id="submit_button" name="submit_button" type="submit">
+            Login
+          </button>
+        </form>
+        <p id="error" class="error-message">
+          <!-- Displays an error message if applicable -->
+        </p>
+
+        <p></p>
+      </div>
+    </main>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

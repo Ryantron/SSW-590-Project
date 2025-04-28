@@ -5,19 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
     <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/about.css" />
   </head>
   <body>
     <header>
+      <h1>
+        <a href="./index.html"
+          ><img src="../logo.png" alt="Home" class="logo"
+        /></a>
+      </h1>
       <nav>
-        <h1>Blog Site</h1>
-        <ol>
-          <li><a href="./index.html">Landing</a></li>
-          <li><a href="./about.html">About</a></li>
-        </ol>
+        <a href="./about.html">About</a>
+        <a href="./login.html">Login</a>
       </nav>
     </header>
-    <main>
-      <h2>List of blogs</h2>
+    <main class="container">
+      <section class="about-section">
+        <h2 class="text-center">About Us</h2>
+        <p>
+          This project develops and deploys a static blog site through a secure,
+          automated DevSecOps CI/CD pipeline. The team uses AWS Amplify for
+          continuous integration and continuous deployment (CI/CD),
+          significantly simplifying the deployment process compared to the
+          initially planned setup with AWS EC2, S3, and CloudFront. AWS Amplify
+          manages both staging and production environments with minimal
+          complexity, streamlining deployment without the need for manual
+          workflow configurations via GitHub Actions.
+          <br /><br />
+          For version control and automated testing, GitHub is used, with GitHub
+          Actions still handling unit and integration testing of both frontend
+          and backend code. This includes tests involving a local MongoDB
+          server, ensuring that code changes are thoroughly validated before
+          deployment.
+          <br /><br />
+          Despite opting out of AWS security groups and IAM roles due to the
+          steep learning curve and the team's limited experience in configuring
+          these advanced security features, the project maintains a focus on
+          secure development practices. Ryan, the team member responsible for
+          AWS, ensures that all services function securely and efficiently,
+          addressing security concerns in areas where deeper configuration isn't
+          feasible.
+          <br /><br />
+          The project demonstrates secure development practices, tool
+          comparisons between AWS, Azure, Jenkins, and GitHub Actions, as well
+          as operational monitoring with AWS CloudWatch and GitHub Insights. It
+          highlights the use of continuous integration and delivery workflows,
+          security scanning, and deployment, showcasing a full end-to-end
+          DevSecOps implementation behind the scenes.
+        </p>
+      </section>
+
+      <section class="credits-section">
+        <h2 class="text-center">Credits</h2>
+        <ul class="credits-list">
+          <li>Ryan Lee</li>
+          <li>Pratyush Patel</li>
+          <li>Kent Quach</li>
+          <li>Owen Truong</li>
+        </ul>
+      </section>
     </main>
   </body>
 </html>
