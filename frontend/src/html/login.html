@@ -21,7 +21,7 @@
     </header>
     <main>
       <div>
-        <form action="/login" method="POST">
+        <form id="login-form">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" required />
           <label for="password">Password:</label>
@@ -30,13 +30,13 @@
             Login
           </button>
         </form>
-        <p id="error" class="error-message">
+        <p id="error-message" class="error-message">
           <!-- Displays an error message if applicable -->
         </p>
 
         <p></p>
       </div>
     </main>
-    <script src="../js/login.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </body>
 </html>

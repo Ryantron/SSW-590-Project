@@ -8,6 +8,7 @@ const generateHtmlPlugin = () => {
       about: './src/html/about.html',
       login: './src/html/login.html',
       blog: './src/html/blog.html',
+      createBlog: './src/html/createBlog.html',
     },
     js: {
       filename: 'js/[name].[contenthash:8].js', // Output JS filename
