@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { backendConfig } from './config.js';
 
-const loginForm = document.querySelector('form');
-const errorMessage = document.getElementById('error');
+const loginForm = document.getElementById('login-form');
+const errorMessage = document.getElementById('error-message');
 
 loginForm.addEventListener('submit', async (event) => {
-  event.preventDefault(); // prevent default form submission
+  event.preventDefault();
 
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value.trim();
@@ -15,6 +15,8 @@ loginForm.addEventListener('submit', async (event) => {
       username,
       password,
     });
+
+    console.log(response.status);
 
     if (response.status === 200) {
       console.log('Login successful:', response.data.message);
