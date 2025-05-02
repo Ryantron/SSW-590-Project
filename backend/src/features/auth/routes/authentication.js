@@ -7,6 +7,11 @@ const router = express.Router();
 
 router.route('/login').post(async (req, res) => {
   try {
+    if (req.session.isLoggedIn) {
+      console.error('User is already logged in');
+      res.status(400).json({ message: 'User is already logged in' });
+      return;
+    }
     const loginCredentials = validate(authSchema, req.body);
     const isLoggedIn = await login(
       loginCredentials.username,

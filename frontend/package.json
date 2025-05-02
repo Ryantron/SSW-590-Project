@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode=production",
-    "build:dev": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "start": "http-server ./dist",
-    "start:dev": "npm run build:dev && http-server ./dist",
-    "dev": "webpack --watch",
+    "dev": "NODE_ENV=development npm run build && npm run start",
     "format:write": "prettier . --write",
     "format:check": "prettier . --check",
     "lint:check": "eslint",

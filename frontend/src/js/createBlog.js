@@ -29,6 +29,7 @@ submitBlogBtn.addEventListener('click', async () => {
     const response = await axios.post(
       backendConfig.url + '/api/blog/protected',
       { title, content },
+      { withCredentials: true },
     );
     console.log(response.data.blog);
   } catch (error) {

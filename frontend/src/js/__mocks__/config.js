@@ -1,7 +1,7 @@
-export const mode = window.process.env.NODE_ENV;
+export const mode = 'development';
 
 export const backendConfig = {
-  url: window.process.env.BACKEND_URL,
+  url: 'http://localhost:3001',
 };
 
 if (!mode) {

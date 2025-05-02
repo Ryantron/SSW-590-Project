@@ -11,16 +11,22 @@ loginForm.addEventListener('submit', async (event) => {
   const password = document.getElementById('password').value.trim();
 
   try {
-    const response = await axios.post(backendConfig.url + '/api/auth/login', {
-      username,
-      password,
-    });
+    const response = await axios.post(
+      backendConfig.url + '/api/auth/login',
+      {
+        username,
+        password,
+      },
+      {
+        withCredentials: true,
+      },
+    );
 
     console.log(response.status);
 
     if (response.status === 200) {
       console.log('Login successful:', response.data.message);
-      window.location.href = './index.html';
+      // window.location.href = './index.html';
     }
   } catch (error) {
     if (error.response) {
