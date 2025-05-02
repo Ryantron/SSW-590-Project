@@ -11,7 +11,9 @@
     "prepare": "cd .. && husky ./.husky",
     "lint-staged": "lint-staged",
     "test:unit": "jest unit --detectOpenHandles",
-    "test:int": "jest int --detectOpenHandles"
+    "test:int": "jest int --detectOpenHandles",
+    "seed": "webpack --entry-reset --entry ./tasks/seed.js --output-path ./dist --output-filename seed-bundle.js --mode=development && node ./dist/seed-bundle.js",
+    "clear": "webpack --entry-reset --entry ./tasks/clear.js --output-path ./dist --output-filename clear-bundle.js --mode=development && node ./dist/clear-bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -43,6 +45,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

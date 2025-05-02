@@ -3,23 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../css/base.css" />
   </head>
   <body>
     <header>
+      <h1>
+        <a href="./index.html"
+          ><img src="../logo.png" alt="Home Logo" class="logo"
+        /></a>
+      </h1>
       <nav>
-        <h1>Blog Site</h1>
-        <ol>
-          <li><a href="./index.html">Landing</a></li>
-          <li><a href="./about.html">About</a></li>
-        </ol>
+        <a href="./about.html" aria-label="About Us">About</a>
+        <a href="./login.html" aria-label="Login">Login</a>
       </nav>
     </header>
-    <main>
-      <h2>About Us</h2>
-    </main>
-  </body>
+    <main class="container">
+      <div>
+        <!-- Create a Blog Button and Search bar -->
+        <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem">
+          <a href="./createBlog.html"
+            ><button id="create-blog-btn">Create a Blog</button></a
+          >
+          <input type="text" id="search-input" placeholder="Search blogs..." />
+          <button id="search-button">Search</button>
+        </div>
 
-  <script src="../js/index.js"></script>
+        <!-- Displays all blogs as links with the title -->
+        <h2 class="text-center">List of Blogs:</h2>
+        <p id="no-blogs" hidden>
+          There are no blogs! Start by clicking "Create a Blog"!
+        </p>
+
+        <ul id="blog-list">
+          <!-- Blog list will be populated here -->
+        </ul>
+      </div>
+    </main>
+    <script type="module" src="../js/index.js"></script>
+  </body>
 </html>

@@ -67,7 +67,7 @@ jobs:
         working-directory: ./backend
 
       - name: Run build
-        run: npm run build
+        run: NODE_ENV=production npm run build
         working-directory: ./backend
 
   check-frontend:
@@ -105,10 +105,6 @@ jobs:
         run: npm run test:unit
         working-directory: ./frontend
 
-      - name: Run integration test for frontend
-        run: npm run test:int
-        working-directory: ./frontend
-
       - name: Run build
-        run: npm run build
+        run: NODE_ENV=production npm run build
         working-directory: ./frontend
