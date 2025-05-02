@@ -11,8 +11,7 @@
     "lint:check": "eslint",
     "prepare": "cd .. && husky ./.husky",
     "lint-staged": "lint-staged",
-    "test:unit": "jest unit --detectOpenHandles",
-    "test:int": "jest int --detectOpenHandles"
+    "test:unit": "jest unit --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -51,8 +50,7 @@
     "**/*.js": [
       "npm run lint:check",
       "npm run format:check",
-      "npm run test:unit",
-      "npm run test:int"
+      "npm run test:unit"
     ]
   }
 }

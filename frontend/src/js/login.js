@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', async (event) => {
 
     if (response.status === 200) {
       console.log('Login successful:', response.data.message);
-      // window.location.href = './index.html';
+      window.location.href = './index.html';
     }
   } catch (error) {
     if (error.response) {
