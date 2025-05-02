@@ -29,6 +29,8 @@ const backendUrls = {
 module.exports = function (env, argv) {
   const mode = process.env.NODE_ENV;
 
+  console.log('Selected Mode: ', mode);
+
   if (mode != 'development' && mode != 'staging' && mode != 'production')
     throw new Error('Invalid Mode Received');
 
