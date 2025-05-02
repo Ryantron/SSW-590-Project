@@ -67,7 +67,7 @@ jobs:
         working-directory: ./backend
 
       - name: Run build
-        run: npm run build
+        run: NODE_ENV=production npm run build
         working-directory: ./backend
 
   check-frontend:
