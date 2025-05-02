@@ -35,14 +35,16 @@ module.exports = function (env, argv) {
     throw new Error('Invalid Mode Received');
 
   return {
-    mode: mode,
+    mode: mode === 'staging' ? 'production' : mode,
     plugins: [
       generateHtmlPlugin(),
       new webpack.DefinePlugin({
         'window.process.env.BACKEND_URL': JSON.stringify(backendUrls[mode]),
       }),
       new webpack.DefinePlugin({
-        'window.process.env.NODE_ENV': JSON.stringify(mode),
+        'window.process.env.NODE_ENV': JSON.stringify(
+          mode === 'staging' ? 'production' : mode,
+        ),
       }),
     ],
     output: {
