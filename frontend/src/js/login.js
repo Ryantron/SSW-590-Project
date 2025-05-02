@@ -36,8 +36,8 @@ loginForm.addEventListener('submit', async (event) => {
   } catch (error) {
     if (error.response) {
       if (error.response.status === 400) {
-        errorMessage.innerHTML =
-          'Incorrect input. Please check your username and password.';
+        alert('You are already logged in.');
+        window.location.href = './index.html';
       } else if (error.response.status === 401) {
         errorMessage.innerHTML = 'Unauthorized. Invalid username or password.';
       } else {

@@ -4,9 +4,6 @@ const contentElement = document.getElementById('blog-content');
 const title = sessionStorage.getItem('blogTitle');
 const content = sessionStorage.getItem('blogContent');
 
-console.log(title);
-console.log(content);
-
 if (title && content) {
   titleElement.textContent = title;
   contentElement.textContent = content;

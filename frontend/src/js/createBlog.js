@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const titleInput = document.getElementById('blog-title');
   const contentInput = document.getElementById('blog-content');
 
-  titleInput.value = ''; // Clear the title field
-  contentInput.value = ''; // Clear the content field
+  titleInput.value = '';
+  contentInput.value = '';
 });
 
 // Event listener to create new blog

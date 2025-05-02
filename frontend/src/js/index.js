@@ -56,21 +56,25 @@ const getBlog = async () => {
 };
 
 // Search functionality
-// const searchInput = document.getElementById('search-input');
-// searchInput.addEventListener('input', () => {
-//   const keyword = searchInput.value.toLowerCase();
-//   const blogListItems = document.querySelectorAll('#blog-list li');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
 
-//   blogListItems.forEach((item) => {
-//     const link = item.querySelector('a');
-//     const title = link.textContent.toLowerCase();
+document.addEventListener('DOMContentLoaded', () => {
+  searchButton.addEventListener('click', () => {
+    const keyword = searchInput.value.toLowerCase();
+    const blogListItems = document.querySelectorAll('#blog-list li');
 
-//     if (title.includes(keyword)) {
-//       item.style.display = ''; // Show the item
-//     } else {
-//       item.style.display = 'none'; // Hide the item
-//     }
-//   });
-// });
+    blogListItems.forEach((item) => {
+      const link = item.querySelector('a');
+      const title = link.textContent.toLowerCase();
+
+      if (title.includes(keyword)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
 
 getBlog();
