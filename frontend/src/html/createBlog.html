@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/createBlog.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="./index.html"
+          ><img src="../logo.png" alt="Home" class="logo"
+        /></a>
+      </h1>
+      <nav>
+        <a href="./about.html">About</a>
+        <a href="./login.html">Login</a>
+      </nav>
+    </header>
+    <main class="container">
+      <div id="create-blog">
+        <h2>Create a New Blog</h2>
+        <input type="text" id="blog-title" placeholder="Blog Title" />
+        <textarea id="blog-content" placeholder="Blog Content"></textarea>
+        <button id="submit-blog-btn">Create Blog</button>
+      </div>
+    </main>
+    <script type="module" src="../js/blog.js"></script>
+    <script type="module" src="../js/createBlog.js"></script>
+  </body>
+</html>

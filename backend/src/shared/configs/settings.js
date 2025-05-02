@@ -44,6 +44,28 @@ export const frontendConfig = {
   url: process.env.FRONTEND_URL,
 };
 
+export const corsConfig = {
+  origin: function (origin, callback) {
+    const allowedOrigins =
+      mode === 'development'
+        ? ['http://127.0.0.1:8080', 'http://localhost:8080']
+        : [
+            'https://staging.d2vqm35c9883o7.amplifyapp.com/',
+            'https://production.d2vqm35c9883o7.amplifyapp.com/',
+          ]; // mingling of staging and production cors is bad.
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+console.log(corsConfig);
+
 export const sessionConfig = {
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -51,7 +73,7 @@ export const sessionConfig = {
   cookie: {
     maxAge: 1000 * process.env.SESSION_MONGO_TTL,
     secure: mode === 'development' ? false : true,
-    sameSite: true,
+    sameSite: mode === 'development' ? 'lax' : 'strict',
   },
   store: {
     mongoUrl: process.env.SESSION_MONGO_URL,
@@ -61,6 +83,8 @@ export const sessionConfig = {
     },
   },
 };
+
+console.log(sessionConfig);
 
 export const adminConfig = {
   username: process.env.ADMIN_USERNAME,
