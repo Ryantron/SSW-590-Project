@@ -4,6 +4,12 @@ import { backendConfig } from './config.js';
 const loginForm = document.getElementById('login-form');
 const errorMessage = document.getElementById('error-message');
 
+const isLoggedIn = localStorage.getItem('isLoggedIn');
+if (isLoggedIn === 'true') {
+  alert('You are already logged in.');
+  window.location.href = './index.html';
+}
+
 loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -22,10 +28,9 @@ loginForm.addEventListener('submit', async (event) => {
       },
     );
 
-    console.log(response.status);
-
     if (response.status === 200) {
       console.log('Login successful:', response.data.message);
+      localStorage.setItem('isLoggedIn', 'true');
       window.location.href = './index.html';
     }
   } catch (error) {

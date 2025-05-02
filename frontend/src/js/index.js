@@ -37,6 +37,15 @@ const getBlog = async () => {
         listItem.appendChild(link);
         blogList.appendChild(listItem);
       });
+
+      document.querySelectorAll('.blog-link').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const title = event.target.dataset.title;
+          const content = event.target.dataset.content;
+          sessionStorage.setItem('blogTitle', title);
+          sessionStorage.setItem('blogContent', content);
+        });
+      });
     }
   } catch (error) {
     console.error(
@@ -46,28 +55,22 @@ const getBlog = async () => {
   }
 };
 
-// GET /api/blog?search=keyword
-// const searchBlogsByKeyword = async (keyword) => {
-//   try {
-//     const response = await axios.get(backendConfig.url + '/api/blog', {
-//       params: { search: keyword.trim() },
-//     });
-//     console.log(response.data.blogs);
-//     return response.data.blogs;
-//   } catch (error) {
-//     console.error('Failed to search blogs:', error.response ? error.response.data : error);
-//     return [];
-//   }
-// };
+// Search functionality
+// const searchInput = document.getElementById('search-input');
+// searchInput.addEventListener('input', () => {
+//   const keyword = searchInput.value.toLowerCase();
+//   const blogListItems = document.querySelectorAll('#blog-list li');
+
+//   blogListItems.forEach((item) => {
+//     const link = item.querySelector('a');
+//     const title = link.textContent.toLowerCase();
+
+//     if (title.includes(keyword)) {
+//       item.style.display = ''; // Show the item
+//     } else {
+//       item.style.display = 'none'; // Hide the item
+//     }
+//   });
+// });
 
 getBlog();
-
-document.querySelectorAll('.blog-link').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const title = event.target.dataset.title;
-    const content = event.target.dataset.content;
-
-    sessionStorage.setItem('blogTitle', title);
-    sessionStorage.setItem('blogContent', content);
-  });
-});
