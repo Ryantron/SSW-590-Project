@@ -22,8 +22,8 @@ const generateHtmlPlugin = () => {
 
 const backendUrls = {
   development: 'http://localhost:3001',
-  staging: '18.190.160.186:3001',
-  production: '18.190.160.186:3002',
+  staging: 'http://18.190.160.186:3001',
+  production: 'http://18.190.160.186:3002',
 };
 
 module.exports = function (env, argv) {
